@@ -1,12 +1,64 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useEffect } from 'react';
+import { Navigation } from '@/components/Navigation';
+import { HeroSection } from '@/components/HeroSection';
+import { AboutSection } from '@/components/AboutSection';
+import { ProjectsSection } from '@/components/ProjectsSection';
+import { ProcessSection } from '@/components/ProcessSection';
+import { ContactSection } from '@/components/ContactSection';
 
 const Index = () => {
+  useEffect(() => {
+    // Smooth scrolling for anchor links
+    document.documentElement.style.scrollBehavior = 'smooth';
+    
+    // Add scroll-triggered animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -10% 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    // Observe all fade-in elements
+    const fadeElements = document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right');
+    fadeElements.forEach((el) => observer.observe(el));
+
+    return () => {
+      fadeElements.forEach((el) => observer.unobserve(el));
+    };
+  }, []);
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen bg-gradient-hero">
+      <Navigation />
+      
+      <main>
+        <div id="home">
+          <HeroSection />
+        </div>
+        
+        <div id="about">
+          <AboutSection />
+        </div>
+        
+        <div id="projects">
+          <ProjectsSection />
+        </div>
+        
+        <div id="process">
+          <ProcessSection />
+        </div>
+        
+        <div id="contact">
+          <ContactSection />
+        </div>
+      </main>
     </div>
   );
 };
