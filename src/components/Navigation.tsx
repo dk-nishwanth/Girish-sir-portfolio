@@ -5,8 +5,8 @@ import { Menu, X } from 'lucide-react';
 const navItems = [
   { name: 'Home', href: '#home' },
   { name: 'About', href: '#about' },
-  { name: 'Projects', href: '#projects' },
-  { name: 'Process', href: '#process' },
+  { name: 'Products', href: '#products' },
+  { name: 'Collaborate', href: '#collaborate' },
   { name: 'Contact', href: '#contact' }
 ];
 
@@ -57,7 +57,7 @@ export const Navigation = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            Polymorphism
+            Girish
           </motion.button>
 
           {/* Desktop Navigation */}

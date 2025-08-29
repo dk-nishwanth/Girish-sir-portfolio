@@ -4,23 +4,28 @@ import { useRef, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { Github, Linkedin, Mail, ExternalLink } from 'lucide-react';
+import { Github, Linkedin, Mail, ExternalLink, Instagram, Youtube } from 'lucide-react';
 import { toast } from 'sonner';
 
 const socialLinks = [
   {
-    icon: Github,
-    href: "https://github.com",
-    label: "GitHub"
+    icon: Instagram,
+    href: "https://instagram.com/girish",
+    label: "Instagram"
+  },
+  {
+    icon: Youtube,
+    href: "https://youtube.com/girish",
+    label: "YouTube"
   },
   {
     icon: Linkedin,
-    href: "https://linkedin.com",
+    href: "https://linkedin.com/in/girish",
     label: "LinkedIn"
   },
   {
     icon: Mail,
-    href: "mailto:hello@example.com",
+    href: "mailto:hello@girish.com",
     label: "Email"
   }
 ];
@@ -36,7 +41,7 @@ export const ContactSection = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    toast.success("Message sent! I'll get back to you soon.");
+    toast.success("Message sent! I'll get back to you within 24 hours.");
     setFormData({ name: '', email: '', message: '' });
   };
 
@@ -60,7 +65,8 @@ export const ContactSection = () => {
             Let's Connect
           </h2>
           <p className="text-xl text-foreground-secondary font-inter max-w-2xl mx-auto">
-            Ready to bring your vision to life? Let's discuss your next project and create something amazing together.
+            Have a brand partnership idea or just want to connect? 
+            I'd love to hear from you and explore how we can work together.
           </p>
         </motion.div>
 
@@ -99,7 +105,7 @@ export const ContactSection = () => {
           <div>
             <Textarea
               name="message"
-              placeholder="Tell me about your project..."
+              placeholder="Tell me about your brand or collaboration idea..."
               value={formData.message}
               onChange={handleChange}
               className="form-input min-h-32 text-lg rounded-2xl border-0 resize-none"
@@ -159,7 +165,7 @@ export const ContactSection = () => {
           transition={{ duration: 0.6, delay: 0.6 }}
         >
           <p className="text-foreground-muted font-inter">
-            © 2024 Polymorphism Portfolio. Crafted with passion and precision.
+            © 2024 Girish • Influencer Portfolio. Creating authentic connections through genuine recommendations.
           </p>
         </motion.div>
       </div>

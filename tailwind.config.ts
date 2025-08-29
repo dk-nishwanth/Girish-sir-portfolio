@@ -44,6 +44,11 @@ export default {
 					foreground: 'hsl(var(--accent-foreground))',
 					glow: 'hsl(var(--accent-glow))'
 				},
+				'secondary-accent': {
+					DEFAULT: 'hsl(var(--secondary-accent))',
+					foreground: 'hsl(var(--secondary-accent-foreground))',
+					glow: 'hsl(var(--secondary-accent-glow))'
+				},
 				card: {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))',
@@ -61,6 +66,7 @@ export default {
 				'gradient-blob': 'var(--gradient-blob)',
 				'gradient-glow': 'var(--gradient-glow)',
 				'gradient-hero': 'var(--gradient-hero)',
+				'gradient-influencer': 'var(--gradient-influencer)',
 			},
 			boxShadow: {
 				'glow': 'var(--shadow-glow)',

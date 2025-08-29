@@ -3,8 +3,8 @@ import { Button } from '@/components/ui/button';
 import heroBlobImage from '@/assets/hero-blob.jpg';
 
 export const HeroSection = () => {
-  const scrollToProjects = () => {
-    document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
+  const scrollToProducts = () => {
+    document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
@@ -40,7 +40,7 @@ export const HeroSection = () => {
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          Polymorphism
+          Girish
         </motion.h1>
         
         <motion.p
@@ -49,7 +49,7 @@ export const HeroSection = () => {
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
         >
-          Engineer • Designer • Visionary
+          Influencer • Creator • Trend Curator
         </motion.p>
         
         <motion.div
@@ -58,11 +58,11 @@ export const HeroSection = () => {
           transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
         >
           <Button
-            onClick={scrollToProjects}
+            onClick={scrollToProducts}
             size="lg"
             className="hero-button px-8 py-4 text-lg font-poppins font-semibold bg-button-primary hover:bg-button-primary-hover text-primary-foreground rounded-full glow-on-hover transition-all duration-300"
           >
-            Explore My Work
+            Explore My Picks
           </Button>
         </motion.div>
       </div>

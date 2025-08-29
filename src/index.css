@@ -25,11 +25,16 @@
     --accent-foreground: 0 0% 100%;
     --accent-glow: 4 90% 80%;
 
+    --secondary-accent: 312 100% 65%; /* Neon Pink #FF3CAC */
+    --secondary-accent-foreground: 0 0% 100%;
+    --secondary-accent-glow: 312 100% 75%;
+
     /* Morphing Gradients */
     --gradient-primary: linear-gradient(135deg, hsl(220 25% 6%), hsl(220 30% 10%), hsl(220 15% 4%));
-    --gradient-blob: linear-gradient(135deg, hsl(210 100% 56%), hsl(4 90% 70%), hsl(280 60% 60%));
+    --gradient-blob: linear-gradient(135deg, hsl(210 100% 56%), hsl(312 100% 65%), hsl(4 90% 70%));
     --gradient-glow: radial-gradient(circle, hsl(210 100% 56% / 0.3), transparent 70%);
     --gradient-hero: linear-gradient(180deg, hsl(220 25% 6%) 0%, hsl(220 20% 8%) 50%, hsl(220 15% 4%) 100%);
+    --gradient-influencer: linear-gradient(135deg, hsl(210 100% 56%), hsl(312 100% 65%), hsl(4 90% 70%));
 
     /* UI Elements */
     --card: 220 20% 10%;
