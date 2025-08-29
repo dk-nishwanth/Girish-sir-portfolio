@@ -2,8 +2,8 @@ import { useEffect } from 'react';
 import { Navigation } from '@/components/Navigation';
 import { HeroSection } from '@/components/HeroSection';
 import { AboutSection } from '@/components/AboutSection';
-import { FeaturedProductsSection } from '@/components/FeaturedProductsSection';
-import { CollaborationSection } from '@/components/CollaborationSection';
+import { TimelineSection } from '@/components/TimelineSection';
+import { WorksSection } from '@/components/WorksSection';
 import { ContactSection } from '@/components/ContactSection';
 
 const Index = () => {
@@ -47,12 +47,12 @@ const Index = () => {
           <AboutSection />
         </div>
         
-        <div id="products">
-          <FeaturedProductsSection />
+        <div id="timeline">
+          <TimelineSection />
         </div>
         
-        <div id="collaborate">
-          <CollaborationSection />
+        <div id="works">
+          <WorksSection />
         </div>
         
         <div id="contact">

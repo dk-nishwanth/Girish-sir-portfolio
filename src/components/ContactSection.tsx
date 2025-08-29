@@ -1,172 +1,192 @@
 import { motion } from 'framer-motion';
-import { useInView } from 'framer-motion';
-import { useRef, useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Github, Linkedin, Mail, ExternalLink, Instagram, Youtube } from 'lucide-react';
-import { toast } from 'sonner';
-
-const socialLinks = [
-  {
-    icon: Instagram,
-    href: "https://instagram.com/girish",
-    label: "Instagram"
-  },
-  {
-    icon: Youtube,
-    href: "https://youtube.com/girish",
-    label: "YouTube"
-  },
-  {
-    icon: Linkedin,
-    href: "https://linkedin.com/in/girish",
-    label: "LinkedIn"
-  },
-  {
-    icon: Mail,
-    href: "mailto:hello@girish.com",
-    label: "Email"
-  }
-];
+import { Send, Mail, MapPin, Clock } from 'lucide-react';
 
 export const ContactSection = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    toast.success("Message sent! I'll get back to you within 24 hours.");
-    setFormData({ name: '', email: '', message: '' });
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData(prev => ({
-      ...prev,
-      [e.target.name]: e.target.value
-    }));
-  };
-
   return (
-    <section ref={ref} className="py-20 px-6 lg:px-20">
-      <div className="max-w-4xl mx-auto text-center">
-        <motion.div
-          className="mb-20"
-          initial={{ y: 50, opacity: 0 }}
-          animate={isInView ? { y: 0, opacity: 1 } : { y: 50, opacity: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          <h2 className="text-5xl lg:text-6xl font-poppins font-bold mb-6 gradient-text">
-            Let's Connect
-          </h2>
-          <p className="text-xl text-foreground-secondary font-inter max-w-2xl mx-auto">
-            Have a brand partnership idea or just want to connect? 
-            I'd love to hear from you and explore how we can work together.
-          </p>
-        </motion.div>
+    <section id="contact" className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-hero py-20">
+      {/* Background Elements */}
+      <div className="absolute inset-0">
+        <div className="absolute top-20 right-20 w-64 h-64 bg-primary/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-20 left-20 w-96 h-96 bg-secondary-accent/10 rounded-full blur-3xl" />
+      </div>
 
-        <motion.form
-          onSubmit={handleSubmit}
-          className="space-y-6 mb-16"
-          initial={{ y: 50, opacity: 0 }}
-          animate={isInView ? { y: 0, opacity: 1 } : { y: 50, opacity: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
-          <div className="grid md:grid-cols-2 gap-6">
-            <div>
-              <Input
-                type="text"
-                name="name"
-                placeholder="Your Name"
-                value={formData.name}
-                onChange={handleChange}
-                className="form-input h-14 text-lg rounded-2xl border-0"
-                required
-              />
-            </div>
-            <div>
-              <Input
-                type="email"
-                name="email"
-                placeholder="Your Email"
-                value={formData.email}
-                onChange={handleChange}
-                className="form-input h-14 text-lg rounded-2xl border-0"
-                required
-              />
-            </div>
-          </div>
-          
-          <div>
-            <Textarea
-              name="message"
-              placeholder="Tell me about your brand or collaboration idea..."
-              value={formData.message}
-              onChange={handleChange}
-              className="form-input min-h-32 text-lg rounded-2xl border-0 resize-none"
-              required
-            />
-          </div>
-          
+      <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-20">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+          {/* Left Side - Content */}
           <motion.div
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
+            className="space-y-8"
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            viewport={{ once: true }}
           >
-            <Button
-              type="submit"
-              size="lg"
-              className="w-full md:w-auto px-12 py-4 text-lg font-poppins font-semibold bg-button-primary hover:bg-button-primary-hover text-primary-foreground rounded-full glow-on-hover transition-all duration-300"
-            >
-              Send Message
-              <ExternalLink className="ml-2 w-5 h-5" />
-            </Button>
-          </motion.div>
-        </motion.form>
+            {/* Main Heading */}
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold text-white leading-tight">
+              LET'S BUILD SOMETHING TOGETHER.
+            </h2>
 
-        {/* Social Links */}
-        <motion.div
-          className="flex justify-center space-x-8"
-          initial={{ y: 30, opacity: 0 }}
-          animate={isInView ? { y: 0, opacity: 1 } : { y: 30, opacity: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-        >
-          {socialLinks.map((link, index) => {
-            const IconComponent = link.icon;
-            return (
-              <motion.a
-                key={index}
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-14 h-14 bg-card border border-card-border rounded-full flex items-center justify-center text-foreground-secondary hover:text-primary hover:border-primary transition-all duration-300"
-                whileHover={{ 
-                  scale: 1.1, 
-                  boxShadow: "0 0 20px hsl(var(--primary) / 0.3)" 
-                }}
-                whileTap={{ scale: 0.95 }}
-                aria-label={link.label}
+            {/* Description */}
+            <p className="text-xl text-foreground-secondary font-inter leading-relaxed">
+              Have a project in mind? Send me a message below or email me directly at{' '}
+              <a 
+                href="mailto:girish@example.com" 
+                className="text-primary hover:text-primary/80 transition-colors underline"
               >
-                <IconComponent className="w-6 h-6" />
-              </motion.a>
-            );
-          })}
-        </motion.div>
+                girish@example.com
+              </a>
+            </p>
+
+            {/* Contact Info */}
+            <div className="space-y-4">
+              <div className="flex items-center space-x-4">
+                <div className="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center">
+                  <Mail className="w-6 h-6 text-primary" />
+                </div>
+                <div>
+                  <p className="text-white font-inter font-medium">Email</p>
+                  <p className="text-foreground-secondary font-inter">girish@example.com</p>
+                </div>
+              </div>
+
+              <div className="flex items-center space-x-4">
+                <div className="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center">
+                  <MapPin className="w-6 h-6 text-primary" />
+                </div>
+                <div>
+                  <p className="text-white font-inter font-medium">Location</p>
+                  <p className="text-foreground-secondary font-inter">Jakarta, Indonesia</p>
+                </div>
+              </div>
+
+              <div className="flex items-center space-x-4">
+                <div className="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center">
+                  <Clock className="w-6 h-6 text-primary" />
+                </div>
+                <div>
+                  <p className="text-white font-inter font-medium">Response Time</p>
+                  <p className="text-foreground-secondary font-inter">Within 24 hours</p>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Right Side - Contact Form */}
+          <motion.div
+            className="relative"
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            viewport={{ once: true }}
+          >
+            <div className="bg-card border border-card-border rounded-2xl p-8 shadow-card">
+              <form className="space-y-6">
+                {/* Name Field */}
+                <div>
+                  <label htmlFor="name" className="block text-white font-inter font-medium mb-2">
+                    Name
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    className="w-full px-4 py-3 bg-input border border-input-border rounded-lg text-white placeholder-foreground-muted focus:border-primary focus:outline-none transition-colors form-input"
+                    placeholder="Your full name"
+                    required
+                  />
+                </div>
+
+                {/* Email Field */}
+                <div>
+                  <label htmlFor="email" className="block text-white font-inter font-medium mb-2">
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    className="w-full px-4 py-3 bg-input border border-input-border rounded-lg text-white placeholder-foreground-muted focus:border-primary focus:outline-none transition-colors form-input"
+                    placeholder="your.email@example.com"
+                    required
+                  />
+                </div>
+
+                {/* Message Field */}
+                <div>
+                  <label htmlFor="message" className="block text-white font-inter font-medium mb-2">
+                    Message
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows={5}
+                    className="w-full px-4 py-3 bg-input border border-input-border rounded-lg text-white placeholder-foreground-muted focus:border-primary focus:outline-none transition-colors form-input resize-none"
+                    placeholder="Tell me about your project..."
+                    required
+                  />
+                </div>
+
+                {/* Submit Button */}
+                <motion.button
+                  type="submit"
+                  className="w-full bg-primary hover:bg-primary/80 text-white font-poppins font-semibold py-4 rounded-lg transition-all duration-300 hover:scale-105 flex items-center justify-center space-x-2"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <Send className="w-5 h-5" />
+                  <span>Send Message</span>
+                </motion.button>
+              </form>
+            </div>
+          </motion.div>
+        </div>
 
         {/* Footer */}
         <motion.div
-          className="mt-20 pt-10 border-t border-card-border text-center"
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
+          className="mt-20 pt-16 border-t border-card-border text-center"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          viewport={{ once: true }}
         >
-          <p className="text-foreground-muted font-inter">
-            © 2024 Girish • Influencer Portfolio. Creating authentic connections through genuine recommendations.
-          </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-foreground-secondary font-inter">
+            <div>
+              <p>© 2025 Girish.</p>
+            </div>
+            <div>
+              <p>girish@example.com</p>
+            </div>
+            <div>
+              <p>Jakarta 10:33 PM</p>
+            </div>
+          </div>
+          
+          {/* Social Icons */}
+          <div className="flex justify-center space-x-6 mt-8">
+            <motion.a
+              href="#"
+              className="w-10 h-10 bg-card border border-card-border rounded-lg flex items-center justify-center text-foreground-secondary hover:text-primary transition-colors"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+            >
+              <span className="text-lg font-mono">{'<>'}</span>
+            </motion.a>
+            <motion.a
+              href="#"
+              className="w-10 h-10 bg-card border border-card-border rounded-lg flex items-center justify-center text-foreground-secondary hover:text-primary transition-colors"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+            >
+              💼
+            </motion.a>
+            <motion.a
+              href="#"
+              className="w-10 h-10 bg-card border border-card-border rounded-lg flex items-center justify-center text-foreground-secondary hover:text-primary transition-colors"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+            >
+              📷
+            </motion.a>
+          </div>
         </motion.div>
       </div>
     </section>

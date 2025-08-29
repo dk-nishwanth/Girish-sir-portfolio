@@ -3,10 +3,9 @@ import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 
 const navItems = [
-  { name: 'Home', href: '#home' },
   { name: 'About', href: '#about' },
-  { name: 'Products', href: '#products' },
-  { name: 'Collaborate', href: '#collaborate' },
+  { name: 'Timeline', href: '#timeline' },
+  { name: 'Works', href: '#works' },
   { name: 'Contact', href: '#contact' }
 ];
 
@@ -53,11 +52,12 @@ export const Navigation = () => {
           {/* Logo */}
           <motion.button
             onClick={() => scrollToSection('#home')}
-            className="text-2xl font-poppins font-bold gradient-text"
+            className="text-2xl font-poppins font-bold text-white"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            Girish
+            <span className="text-white">GIRISH</span>
+            <span className="text-foreground-secondary ml-2 font-light"></span>
           </motion.button>
 
           {/* Desktop Navigation */}
@@ -66,7 +66,7 @@ export const Navigation = () => {
               <motion.button
                 key={item.name}
                 onClick={() => scrollToSection(item.href)}
-                className="text-foreground-secondary hover:text-primary transition-colors duration-300 font-inter font-medium"
+                className="text-white hover:text-primary transition-colors duration-300 font-inter font-medium"
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
@@ -79,7 +79,7 @@ export const Navigation = () => {
 
           {/* Mobile Menu Button */}
           <motion.button
-            className="md:hidden w-10 h-10 bg-card border border-card-border rounded-lg flex items-center justify-center text-foreground-secondary hover:text-primary transition-colors"
+            className="md:hidden w-10 h-10 bg-card border border-card-border rounded-lg flex items-center justify-center text-white hover:text-primary transition-colors"
             onClick={() => setIsOpen(!isOpen)}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -103,7 +103,7 @@ export const Navigation = () => {
               <motion.button
                 key={item.name}
                 onClick={() => scrollToSection(item.href)}
-                className="block w-full text-left px-4 py-3 text-foreground-secondary hover:text-primary hover:bg-card/50 transition-all duration-300 font-inter font-medium rounded-lg"
+                className="block w-full text-left px-4 py-3 text-white hover:text-primary hover:bg-card/50 transition-all duration-300 font-inter font-medium rounded-lg"
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ 
                   opacity: isOpen ? 1 : 0, 

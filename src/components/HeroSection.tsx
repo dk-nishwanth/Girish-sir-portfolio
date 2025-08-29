@@ -1,93 +1,49 @@
-import { motion } from 'framer-motion';
-import { Button } from '@/components/ui/button';
-import heroBlobImage from '@/assets/hero-blob.jpg';
+import { motion } from "framer-motion";
+import portrait from "@/assets/portrait.png";
 
 export const HeroSection = () => {
-  const scrollToProducts = () => {
-    document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' });
-  };
-
   return (
-    <section className="hero-section min-h-screen flex items-center justify-center relative overflow-hidden">
-      {/* Background morphing blob */}
-      <motion.div
-        className="morphing-blob absolute w-96 h-96 opacity-80"
-        initial={{ scale: 0, opacity: 0 }}
-        animate={{ scale: 1, opacity: 0.8 }}
-        transition={{ duration: 1, ease: "easeOut" }}
-      />
-      
-      {/* Hero blob image */}
-      <motion.div
-        className="absolute inset-0 flex items-center justify-center"
-        initial={{ scale: 0.8, opacity: 0 }}
-        animate={{ scale: 1, opacity: 0.6 }}
+    <section className="min-h-screen w-full relative overflow-hidden">
+      {/* Fullscreen Portrait Background */}
+      <motion.img
+        src={portrait}
+        alt="Low Poly Portrait"
+        className="absolute inset-0 w-full h-full object-cover object-center"
+        initial={{ opacity: 0, scale: 1.1 }}
+        animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1.2, ease: "easeOut" }}
-      >
-        <img 
-          src={heroBlobImage} 
-          alt="Abstract morphing blob"
-          className="w-[600px] h-[600px] object-contain opacity-60 animate-pulse"
-          style={{ animationDuration: '4s' }}
-        />
-      </motion.div>
+      />
 
-      {/* Content overlay */}
-      <div className="relative z-10 text-center max-w-4xl mx-auto px-6">
+      {/* Main Content */}
+      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen text-center">
         <motion.h1
-          className="text-7xl md:text-8xl lg:text-9xl font-poppins font-extrabold mb-6 gradient-text leading-tight"
-          initial={{ y: 100, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
+          className="text-6xl md:text-8xl font-bold text-white tracking-tight"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           Girish
         </motion.h1>
-        
+
         <motion.p
-          className="text-xl md:text-2xl text-foreground-secondary mb-12 font-inter font-light"
-          initial={{ y: 50, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
+          className="mt-4 text-xl md:text-2xl text-gray-200 italic"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
         >
-          Influencer • Creator • Trend Curator
+          Building ideas where logic meets creativity.
         </motion.p>
-        
-        <motion.div
-          initial={{ y: 50, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
-        >
-          <Button
-            onClick={scrollToProducts}
-            size="lg"
-            className="hero-button px-8 py-4 text-lg font-poppins font-semibold bg-button-primary hover:bg-button-primary-hover text-primary-foreground rounded-full glow-on-hover transition-all duration-300"
-          >
-            Explore My Picks
-          </Button>
-        </motion.div>
       </div>
 
-      {/* Floating particles effect */}
-      <div className="absolute inset-0 pointer-events-none">
-        {[...Array(6)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-2 h-2 bg-primary rounded-full opacity-60"
-            style={{
-              left: `${20 + i * 15}%`,
-              top: `${30 + i * 8}%`,
-            }}
-            animate={{
-              y: [-20, 20, -20],
-              opacity: [0.3, 0.8, 0.3],
-            }}
-            transition={{
-              duration: 3 + i * 0.5,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-          />
-        ))}
+      {/* Floating Blobs */}
+      <div className="absolute top-20 left-20">
+        <div className="w-40 h-40 bg-purple-500/20 rounded-full blur-3xl animate-pulse"></div>
+      </div>
+      <div className="absolute bottom-20 right-20">
+        <div className="w-32 h-32 bg-blue-400/20 rounded-full blur-3xl animate-ping"></div>
+      </div>
+      <div className="absolute top-1/2 right-1/4">
+        <div className="w-24 h-24 bg-pink-500/20 rounded-full blur-2xl animate-bounce"></div>
       </div>
     </section>
   );

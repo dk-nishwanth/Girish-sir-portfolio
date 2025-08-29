@@ -1,108 +1,148 @@
-import { motion } from 'framer-motion';
-import { useInView } from 'framer-motion';
-import { useRef } from 'react';
-import girishPortrait from '@/assets/girish-portrait.jpg';
+import { motion } from "framer-motion";
+import bwPortrait from "../assets/2ndportrait.png";
+ // <-- put your black & white image in assets folder
 
 export const AboutSection = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-
   return (
-    <section ref={ref} className="min-h-screen flex items-center py-20 px-6 lg:px-20">
-      <div className="max-w-7xl mx-auto w-full">
+    <section
+      id="about"
+      className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-hero"
+    >
+      {/* Background Elements */}
+      <div className="absolute inset-0">
+        <div className="absolute top-20 left-20 w-64 h-64 bg-primary/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-20 right-20 w-96 h-96 bg-secondary-accent/10 rounded-full blur-3xl" />
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-20">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Left side - Portrait */}
+          {/* Left Side - Portrait Image */}
           <motion.div
-            className="relative flex justify-center lg:justify-start"
-            initial={{ x: -100, opacity: 0 }}
-            animate={isInView ? { x: 0, opacity: 1 } : { x: -100, opacity: 0 }}
+            className="relative"
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
+            viewport={{ once: true }}
           >
-            <div className="relative">
-              <img 
-                src={girishPortrait}
-                alt="Girish - Influencer Portrait"
-                className="w-80 h-80 lg:w-96 lg:h-96 object-cover rounded-3xl shadow-card"
-              />
-              
-              {/* Floating accent elements */}
-              <motion.div
-                className="absolute -top-4 -right-4 w-24 h-24 morphing-blob-small opacity-60"
-                animate={{
-                  y: [-10, 10, -10],
-                  rotate: [0, 180, 360],
-                }}
-                transition={{
-                  duration: 8,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-              />
+            <div className="relative w-full aspect-square max-w-lg mx-auto">
+              <div className="w-full h-full bg-gradient-to-br from-amber-800/30 to-amber-700/40 rounded-2xl border border-card-border relative overflow-hidden flex items-center justify-center">
+                <img
+                  src={bwPortrait}
+                  alt="Black and White Portrait"
+                  className="w-full h-full object-cover rounded-2xl opacity-90"
+                />
+
+                {/* Tagline overlay */}
+                <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-center">
+                  <p className="text-white font-poppins font-bold text-lg leading-tight drop-shadow-lg">
+                    I BUILD THE QUIET SPACE-
+                    <br />
+                    WHERE FUNCTION AND BEAUTY MEET.
+                  </p>
+                </div>
+              </div>
             </div>
           </motion.div>
 
-          {/* Right side - Content */}
+          {/* Right Side - Content */}
           <motion.div
             className="space-y-8"
-            initial={{ x: 100, opacity: 0 }}
-            animate={isInView ? { x: 0, opacity: 1 } : { x: 100, opacity: 0 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            viewport={{ once: true }}
           >
-            <div>
-              <motion.h2
-                className="text-5xl lg:text-6xl font-poppins font-bold mb-6 gradient-text"
-                initial={{ y: 50, opacity: 0 }}
-                animate={isInView ? { y: 0, opacity: 1 } : { y: 50, opacity: 0 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-              >
-                About Me
-              </motion.h2>
-              
-              <motion.div
-                className="space-y-6 text-lg lg:text-xl text-foreground-secondary leading-relaxed font-inter"
-                initial={{ y: 30, opacity: 0 }}
-                animate={isInView ? { y: 0, opacity: 1 } : { y: 30, opacity: 0 }}
-                transition={{ duration: 0.6, delay: 0.6 }}
-              >
-                <p>
-                  I showcase products, trends, and ideas that inspire people. From lifestyle 
-                  essentials to creative tools, I connect audiences with what matters.
-                </p>
-                <p>
-                  My content bridges the gap between discovery and decision, helping thousands 
-                  find products that genuinely enhance their lives through authentic recommendations.
-                </p>
-                <p>
-                  Every collaboration is an opportunity to introduce my community to innovations 
-                  that align with their values and aspirations.
-                </p>
-              </motion.div>
-            </div>
-            
-            {/* Audience/Content categories */}
+            {/* Section Label */}
             <motion.div
-              className="flex flex-wrap gap-3 pt-6"
-              initial={{ y: 30, opacity: 0 }}
-              animate={isInView ? { y: 0, opacity: 1 } : { y: 30, opacity: 0 }}
-              transition={{ duration: 0.6, delay: 0.8 }}
+              className="text-foreground-secondary text-lg font-inter"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
             >
-              {['Tech', 'Lifestyle', 'Fashion', 'Beauty', 'Home', 'Travel'].map((category, index) => (
-                <motion.span
-                  key={category}
-                  className="px-4 py-2 bg-card border border-card-border rounded-full text-sm font-inter text-foreground-secondary"
-                  whileHover={{ scale: 1.05, borderColor: 'hsl(var(--secondary-accent))' }}
-                  transition={{ duration: 0.2 }}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
-                  custom={index}
-                  style={{ transitionDelay: `${0.9 + index * 0.1}s` }}
-                >
-                  {category}
-                </motion.span>
-              ))}
+              (About.)
+            </motion.div>
+
+            {/* Main Heading */}
+            <motion.h2
+              className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold text-white leading-tight"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              viewport={{ once: true }}
+            >
+              I'M GIRISH.
+            </motion.h2>
+
+            {/* Description */}
+            <motion.p
+              className="text-xl md:text-2xl text-foreground-secondary font-inter leading-relaxed max-w-2xl"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+              viewport={{ once: true }}
+            >
+              I USE FLUTTER AND FIGMA TO CRAFT DIGITAL ANATOMIES WHERE THE
+              ELEGANCE OF ARCHITECTURE AND THE BEAUTY OF DESIGN ASSEMBLED TO
+              DELIVER EFFICIENT- HIGH PERFORMING SOLUTIONS.
+            </motion.p>
+
+            {/* Tagline */}
+            <motion.div
+              className="pt-8"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.8 }}
+              viewport={{ once: true }}
+            >
+              <p className="text-2xl md:text-3xl font-poppins font-bold text-white leading-tight">
+              Crafting Serenity
+                <br />
+                With Purpose and Style.
+              </p>
             </motion.div>
           </motion.div>
         </div>
+
+        {/* Stats Section */}
+        <motion.div
+          className="grid grid-cols-2 md:grid-cols-5 gap-8 mt-20 pt-16 border-t border-card-border"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          viewport={{ once: true }}
+        >
+          <div className="text-center">
+            <div className="stat-number">5+</div>
+            <p className="text-foreground-secondary font-inter">
+              Years Experience
+            </p>
+          </div>
+          <div className="text-center">
+            <div className="stat-number">10+</div>
+            <p className="text-foreground-secondary font-inter">
+              Projects Completed
+            </p>
+          </div>
+          <div className="text-center">
+            <div className="stat-number">MILLIONS</div>
+            <p className="text-foreground-secondary font-inter">
+              of Codes Written
+            </p>
+          </div>
+          <div className="text-center">
+            <div className="stat-number">HUNDREDS</div>
+            <p className="text-foreground-secondary font-inter">
+              of Screen Designed
+            </p>
+          </div>
+          <div className="text-center">
+            <div className="stat-number">∞</div>
+            <p className="text-foreground-secondary font-inter">
+              Coffee Consumed
+            </p>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
