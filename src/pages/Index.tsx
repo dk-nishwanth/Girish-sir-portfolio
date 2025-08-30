@@ -4,6 +4,7 @@ import { HeroSection } from '@/components/HeroSection';
 import { AboutSection } from '@/components/AboutSection';
 import { TimelineSection } from '@/components/TimelineSection';
 import { WorksSection } from '@/components/WorksSection';
+import { AffiliateSection } from '@/components/AffiliateSection';
 import { ContactSection } from '@/components/ContactSection';
 
 const Index = () => {
@@ -53,6 +54,10 @@ const Index = () => {
         
         <div id="works">
           <WorksSection />
+        </div>
+        
+        <div id="affiliate">
+          <AffiliateSection />
         </div>
         
         <div id="contact">
